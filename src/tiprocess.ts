@@ -17,6 +17,8 @@ export class TIProcess {
 
     public generateNewDefn(name: string, numParams: number, numVars: number, dsType: string): TIProcessDefn {
         let defn = Object.assign(new TIProcessDefn(), TIProcessDefn.prototype);
+        defn.Parameters = [];
+        defn.Variables = [];
         defn.Name = name;
         defn.DataSource = Object.assign(new TIProcessDataSource(), TIProcessDataSource.prototype);
 

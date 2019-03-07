@@ -76,24 +76,6 @@ export function activate(context: vscode.ExtensionContext) {
         });
     }
 
-    // This command is useful when you have a multi-line string value that you need to use in a JSON document.
-    // An example would be the prolog procedure for a TI script. This command will flatten the text, while preserving
-    // the line break characters in the flattened string.
-    let cmdRemoveLineBreaks = vscode.commands.registerCommand('extension.RemoveLineBreaks', () => {
-        let editor = vscode.window.activeTextEditor;
-		let doc = editor.document;
-        let text = doc.getText();
-        text = text.replace(/(\r\n|\n|\r)/gm,"\\r\\n");
-        editor.edit((e) => {
-            var firstLine = editor.document.lineAt(0);
-            var lastLine = editor.document.lineAt(editor.document.lineCount - 1);
-            var textRange = new vscode.Range(0,  firstLine.range.start.character, editor.document.lineCount - 1, lastLine.range.end.character);
-            e.replace(textRange, text);
-        });
-    });
-
-    context.subscriptions.push(cmdRemoveLineBreaks);
-
     let cmdNewTM1Connection = vscode.commands.registerCommand('extension.NewConnection', () => {
         // Prompt for connection name.
         vscode.window.showInputBox({prompt: "Enter Connection Name", placeHolder: "Connection Name (example: Prod)", ignoreFocusOut: true}).then((connName: string) => {

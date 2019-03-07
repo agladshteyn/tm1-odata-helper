@@ -12,6 +12,8 @@ class TIProcess {
     }
     generateNewDefn(name, numParams, numVars, dsType) {
         let defn = Object.assign(new process_1.TIProcessDefn(), process_1.TIProcessDefn.prototype);
+        defn.Parameters = [];
+        defn.Variables = [];
         defn.Name = name;
         defn.DataSource = Object.assign(new process_1.TIProcessDataSource(), process_1.TIProcessDataSource.prototype);
         for (let i = 0; i < numParams; i++) {

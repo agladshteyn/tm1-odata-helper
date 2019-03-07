@@ -43,7 +43,7 @@ class TM1Client {
             },
             strictSSL: false,
             body: body,
-            proxy: "http://localhost:8888"
+            proxy: this.proxy
         };
         this.setAuthorization(connection, options);
         request.post(options, (error, res, body) => {
@@ -74,7 +74,7 @@ class TM1Client {
             url: connection.Url + '/api/v1/Configuration',
             json: true,
             strictSSL: false,
-            proxy: "http://localhost:8888"
+            proxy: this.proxy
         };
         this.setAuthorization(connection, options);
         request.get(options, (error, res, body) => {
@@ -150,7 +150,7 @@ class TM1Client {
             url: connection.Url + '/api/logout',
             json: true,
             strictSSL: false,
-            proxy: "http://localhost:8888"
+            proxy: this.proxy
         };
         this.setAuthorization(connection, options);
         request.get(options, (error, res, body) => {
