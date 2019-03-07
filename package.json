@@ -1,0 +1,95 @@
+{
+	"name": "tm1-odata-helper",
+	"displayName": "TM1 OData Helper",
+	"description": "Provides a way to interact with a TM1 instance via REST API. Allows users to run various commands against the TM1 instance, for example creating a TI process.",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.31.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.NewConnection",
+		"onCommand:extension.NewTIProcessTemplate",
+		"onCommand:extension.CreateTIProcess"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.NewConnection",
+				"title": "TM1Helper: New TM1 connection"
+			},
+			{
+				"command": "extension.NewTIProcessTemplate",
+				"title": "TM1Helper: New TI Process Template"
+			},
+			{
+				"command": "extension.CreateTIProcess",
+				"title": "TM1Helper: Create TI Process From Definition"
+			}
+		],
+		"languages": [
+			{
+				"id": "mdx",
+				"aliases": [
+					"MDX Multidimensional Expressions"
+				],
+				"extensions": [
+					".mdx"
+				],
+				"configuration": "./mdx-language/mdx-configuration.json"
+			},
+			{
+				"id": "tm1rule",
+				"aliases": [
+					"TM1 Rule",
+					"tm1 rule"
+				],
+				"extensions": [
+					".rux"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "mdx",
+				"scopeName": "source.mdx",
+				"path": "./syntaxes/mdx.tmLanguage"
+			}
+		],
+		"configuration": {
+			"title": "TM1 Client default server",
+			"type": "object",
+			"properties": {
+				"whiteducksoftware.tm1client.defaultserver": {
+					"type": "string",
+					"description": "Default TM1 server for TM1 MDX Client extension"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"tslint": "^5.12.1",
+		"@types/node": "^8.10.25",
+		"@types/mocha": "^2.2.42",
+		"request": "2.79.0",
+		"pegjs": "0.10.0"
+	},
+	"dependencies": {
+		"pegjs": "0.10.0",
+		"reflect-metadata": "^0.1.13",
+		"request": "2.79.0"
+	}
+}
